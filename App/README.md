@@ -1,4 +1,4 @@
-# e-roster-vue
+# Creation Foundation Marketing Website
 
 ## Project setup
 ```
