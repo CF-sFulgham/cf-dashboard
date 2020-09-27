@@ -10,7 +10,7 @@ import modules from './module'
 Vue.use(Vuex)
 const isDev = process.env.NODE_ENV === 'development'
 const plugins = isDev ? [createLogger()] : []
-const eLogger = new Logger()
+const cfLogger = new Logger()
 
 const store = new Vuex.Store({
   plugins: plugins,
@@ -22,7 +22,7 @@ const store = new Vuex.Store({
 })
 
 // store.$AxiosInstance = isDev ? new AxiosInstanceDev() : new AxiosInstance()
-// store.$Logger = eLogger;
+store.$Logger = cfLogger;
 
 export default store
 

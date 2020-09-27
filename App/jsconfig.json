@@ -14,14 +14,6 @@
         "..//index.scss",
         "..//index.css"
       ],
-      "@root/*": [".//*"],
-      "@root": [
-        ".//index.js",
-        ".//index.json",
-        ".//index.vue",
-        ".//index.scss",
-        ".//index.css"
-      ],
       "@src/*": ["../src/*"],
       "@src": [
         "../src/index.js",
@@ -95,15 +87,7 @@
         "../src/state/index.css"
       ],
       "@sass/*": ["../src/sass/index.scss/*"],
-      "@sass": ["../src/sass/index.scss"],
-      "@BL/*": ["../src/BFF/BL/*"],
-      "@BL": [
-        "../src/BFF/BL/index.js",
-        "../src/BFF/BL/index.json",
-        "../src/BFF/BL/index.vue",
-        "../src/BFF/BL/index.scss",
-        "../src/BFF/BL/index.css"
-      ]
+      "@sass": ["../src/sass/index.scss"]
     }
   }
 }

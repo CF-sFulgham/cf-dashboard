@@ -13,7 +13,7 @@ export default {
     <div class="container">
       <div class="slim-header-left">
         <h2 class="slim-logo">
-          <a href="index.html">eRoster<span>.</span> </a>
+          <a href="index.html">Creation Foundation<span>.</span> </a>
         </h2>
       </div>
       <!-- slim-header-left -->

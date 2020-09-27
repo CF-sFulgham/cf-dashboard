@@ -29,16 +29,16 @@ export default {
             header: {
               title: 'Sticky Header',
               options: [
-                {name: 'sticky-header', value: 'yes', checked: this.settings.stickyHeader},
-                {name: 'sticky-header', value: 'no', checked: this.settings.stickyHeader},
+                {name: 'sticky-header', value: 'yes'},
+                {name: 'sticky-header', value: 'no'},
               ]
             }
           },
           page: {
             title: 'Page Wide',
             options: [
-              {name: 'full-width', value: 'yes', checked: this.settings.fullWidth},
-              {name: 'full-width', value: 'no', checked: this.settings.fullWidth},
+              {name: 'full-width', value: 'yes'},
+              {name: 'full-width', value: 'no'},
             ]
           },
           navigation: {

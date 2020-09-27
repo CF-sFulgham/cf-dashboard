@@ -2,7 +2,6 @@ import { PAGE_STATE, LOG_TYPE } from '@utils/enums'
 import { v4 } from 'uuid'
 import { Storage } from '@utils/storage'
 
-const BLL = new Sessions()
 const storage = new Storage(window.sessionStorage)
 
 export const state = {

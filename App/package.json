@@ -62,8 +62,6 @@
     "eslint-plugin-promise": "4.2.x",
     "eslint-plugin-standard": "4.0.x",
     "eslint-plugin-vue": "6.2.x",
-    "express": "4.17.x",
-    "hygen": "4.0.x",
     "imagemin-lint-staged": "0.4.x",
     "jquery": "~2.2",
     "lint-staged": "10.0.x",
@@ -73,8 +71,7 @@
     "stylelint-config-css-modules": "2.2.x",
     "stylelint-config-prettier": "8.0.x",
     "stylelint-config-recess-order": "2.0.x",
-    "stylelint-config-standard": "20.0.x",
-    "vuepress": "1.3.x"
+    "stylelint-config-standard": "20.0.x"
   },
   "resolutions": {
     "@vue/cli-plugin-unit-jest/jest": "25.1.x",
