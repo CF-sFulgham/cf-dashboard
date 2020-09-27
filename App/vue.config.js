@@ -1,7 +1,7 @@
 const app = require('./config/app.config')
 const aliases = require('./config/aliases.config')
 
-const publicPath = app.settings.environment !== 'production' ? '/' : './'
+const publicPath = app.settings.environment !== 'production' ? '' : './'
 
 process.NODE_ENV = JSON.stringify(app.settings.environment)
 process.env.VUE_APP_CONFIG = JSON.stringify(app)
@@ -31,13 +31,14 @@ module.exports = {
     // CI should watch the output to prevent deployments to the server.
     // Enable performance hints for all other environments.
     // This will log warnings for for files over 250kb.
-    config.performance.hints(
-      process.env.NODE_ENV !== 'production' &&
-        !process.env.VUE_APP_TEST &&
-        process.env.NODE_ENV !== 'production'
-        ? 'warning'
-        : 'error'
-    )
+    // config.performance.hints(
+    //   process.env.NODE_ENV !== 'production' &&
+    //     !process.env.VUE_APP_TEST &&
+    //     process.env.NODE_ENV !== 'production'
+    //     ? 'warning'
+    //     : 'error'
+    //     : 'false'
+    // )
   },
   // Change the path to public based on environment. This allows
   // urls to be redirected to homepage instead of 404s.
@@ -53,24 +54,14 @@ module.exports = {
   // https://cli.vuejs.org/guide/cli-service.html
   // https://github.com/chrisvfritz/vue-enterprise-boilerplate/issues/25
   // https://sdk.gooddata.com/gooddata-ui/docs/4.1.1/ht_configure_webpack_proxy.html
+  /*
   devServer: {
-    ...(process.env.API_BASE_URL
-      ? // Proxy API endpoints to the production base URL.
-        {
-          proxy: {
-            // Proxy API endpoints for the SiteMinder login.
-            '/mfp': {
-              target: 'http://mfp.primericaonline.com:9080',
-            },
-            '/api/v1': {
-              target: 'http://localhost:5151',
-            },
-          },
-        }
-      : // Proxy API endpoints a local mock API.
-        {
-          before: require('./tests/mock-api'),
-        }),
+    disableHostCheck: true,
+    https: true,
+    host: 'local.admin.primerica.com',
+    hotOnly: false,
   },
+  */
+
   transpileDependencies: ['bootstrap/js/src', '/assets/js/slim.js'],
 }

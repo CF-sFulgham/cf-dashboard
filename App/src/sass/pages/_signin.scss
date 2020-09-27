@@ -50,7 +50,7 @@
   margin-bottom: 40px;
   border: 0;
   min-height: 40px;
-  @include gradient-x($blue, $purple);
+  background-color: $blue;
 }
 
 // Signin 2

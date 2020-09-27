@@ -46,8 +46,3 @@ export default {
     "
   />
 </template>
-
-<style lang="scss" module>
-@import '@sass';
-
-</style>

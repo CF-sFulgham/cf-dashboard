@@ -32,7 +32,7 @@
     &.active {
       .nav-link {
         background-color: theme-color('primary');
-        @include gradient-x($blue,lighten($darkblue,15%));
+        // @include gradient-x($blue,lighten($darkblue,15%));
         border-width: 0;
         color: #fff;
 

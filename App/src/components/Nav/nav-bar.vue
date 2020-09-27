@@ -1,5 +1,5 @@
 <script>
-// import { rosterMethods } from '@state/componentHelper'
+import { layoutComputed } from '@state/helper/layout'
 
 export default {
   data() {
@@ -28,6 +28,9 @@ export default {
       ],
     }
   },
+  computed: {
+    ...layoutComputed,
+  }
 
   // created() {
   //   this.fetchRoster({ username: 'steven' }).then((response) => {
@@ -44,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class="slim-navbar">
+  <nav class="slim-navbar">
     <div class="container">
       <ul class="nav">
         <li class="nav-item">
@@ -70,9 +73,5 @@ export default {
       </ul>
     </div>
     <!-- container -->
-  </div>
+  </nav>
 </template>
-
-<style lang="scss" module>
-@import '@sass';
-</style>

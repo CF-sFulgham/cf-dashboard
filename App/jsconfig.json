@@ -1,0 +1,109 @@
+{
+  "baseUrl": ".",
+  "include": ["src/**/*", "tests/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "esnext",
+    "module": "es2015",
+    "paths": {
+      "@/*": ["..//*"],
+      "@": [
+        "..//index.js",
+        "..//index.json",
+        "..//index.vue",
+        "..//index.scss",
+        "..//index.css"
+      ],
+      "@root/*": [".//*"],
+      "@root": [
+        ".//index.js",
+        ".//index.json",
+        ".//index.vue",
+        ".//index.scss",
+        ".//index.css"
+      ],
+      "@src/*": ["../src/*"],
+      "@src": [
+        "../src/index.js",
+        "../src/index.json",
+        "../src/index.vue",
+        "../src/index.scss",
+        "../src/index.css"
+      ],
+      "@router/*": ["../src/router/*"],
+      "@router": [
+        "../src/router/index.js",
+        "../src/router/index.json",
+        "../src/router/index.vue",
+        "../src/router/index.scss",
+        "../src/router/index.css"
+      ],
+      "@viewFeatures/*": ["../src/router/views/Features/*"],
+      "@viewFeatures": [
+        "../src/router/views/Features/index.js",
+        "../src/router/views/Features/index.json",
+        "../src/router/views/Features/index.vue",
+        "../src/router/views/Features/index.scss",
+        "../src/router/views/Features/index.css"
+      ],
+      "@viewLayouts/*": ["../src/router/views/Layouts/*"],
+      "@viewLayouts": [
+        "../src/router/views/Layouts/index.js",
+        "../src/router/views/Layouts/index.json",
+        "../src/router/views/Layouts/index.vue",
+        "../src/router/views/Layouts/index.scss",
+        "../src/router/views/Layouts/index.css"
+      ],
+      "@viewShared/*": ["../src/router/views/Shared/*"],
+      "@viewShared": [
+        "../src/router/views/Shared/index.js",
+        "../src/router/views/Shared/index.json",
+        "../src/router/views/Shared/index.vue",
+        "../src/router/views/Shared/index.scss",
+        "../src/router/views/Shared/index.css"
+      ],
+      "@components/*": ["../src/components/*"],
+      "@components": [
+        "../src/components/index.js",
+        "../src/components/index.json",
+        "../src/components/index.vue",
+        "../src/components/index.scss",
+        "../src/components/index.css"
+      ],
+      "@assets/*": ["../src/assets/*"],
+      "@assets": [
+        "../src/assets/index.js",
+        "../src/assets/index.json",
+        "../src/assets/index.vue",
+        "../src/assets/index.scss",
+        "../src/assets/index.css"
+      ],
+      "@utils/*": ["../src/utils/*"],
+      "@utils": [
+        "../src/utils/index.js",
+        "../src/utils/index.json",
+        "../src/utils/index.vue",
+        "../src/utils/index.scss",
+        "../src/utils/index.css"
+      ],
+      "@state/*": ["../src/state/*"],
+      "@state": [
+        "../src/state/index.js",
+        "../src/state/index.json",
+        "../src/state/index.vue",
+        "../src/state/index.scss",
+        "../src/state/index.css"
+      ],
+      "@sass/*": ["../src/sass/index.scss/*"],
+      "@sass": ["../src/sass/index.scss"],
+      "@BL/*": ["../src/BFF/BL/*"],
+      "@BL": [
+        "../src/BFF/BL/index.js",
+        "../src/BFF/BL/index.json",
+        "../src/BFF/BL/index.vue",
+        "../src/BFF/BL/index.scss",
+        "../src/BFF/BL/index.css"
+      ]
+    }
+  }
+}

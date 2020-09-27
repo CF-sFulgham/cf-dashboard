@@ -3,8 +3,3 @@
     <slot />
   </button>
 </template>
-
-<style lang="scss" module>
-@import '@sass';
-
-</style>

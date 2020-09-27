@@ -22,14 +22,9 @@ export default {
         to={route}
         exact-active-class={$style.active}
       >
-        <a>{getRouteTitle(route)}</a>
+        <a><BaseIcon name="arrow-alt-circle-left" />{getRouteTitle(route)}</a>
       </BaseLink>
     ))
   },
 }
 </script>
-
-<style lang="scss" module>
-@import '@sass';
-
-</style>

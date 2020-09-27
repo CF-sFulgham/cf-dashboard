@@ -6,7 +6,12 @@ import camelCase from 'lodash/camelCase'
 // https://fontawesome.com/icons
 fontAwesomeIconLibrary.add(
   require('@fortawesome/free-solid-svg-icons/faSync').definition,
-  require('@fortawesome/free-solid-svg-icons/faUser').definition
+  require('@fortawesome/free-solid-svg-icons/faUser').definition,
+  require('@fortawesome/free-solid-svg-icons/faSpinner').definition,
+  require('@fortawesome/free-solid-svg-icons/faCog').definition,
+  require('@fortawesome/free-solid-svg-icons/faCalendar').definition,
+  require('@fortawesome/free-solid-svg-icons/faClock').definition,
+  require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition
 )
 
 export default {
@@ -22,7 +27,7 @@ export default {
     name: {
       type: String,
       required: true,
-    },
+    }
   },
   computed: {
     // Gets a CSS module class, e.g. iconCustomLogo
