@@ -125,6 +125,17 @@ export default [
     path: '*',
     redirect: '404',
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => lazyLoadView(import('@viewFeatures/Login/login.vue')),
+    meta: {
+      beforeResolve(routeTo, routeFrom, next) {
+        store.dispatch('layout/breadcrumbMenu', { display: false }, { root: true })
+        next()
+      },
+    },
+  },
 ]
 //
 function lazyLoadView(AsyncView) {
