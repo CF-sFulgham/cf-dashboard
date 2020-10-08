@@ -52,6 +52,7 @@
 
 <script>
 import PasswordReset from '@components/PasswordReset/PasswordReset.vue'
+import { usersComputed, usersMethods } from '@state/helper/users'
 
 export default {
   components: {
@@ -73,7 +74,11 @@ export default {
       showPasswordReset: false
     }
   },
+  computed: {
+    ...usersComputed,
+  },
   methods: {
+    ...usersMethods,
     toggleForm() {
       this.showLoginForm = !this.showLoginForm
     },
@@ -81,18 +86,20 @@ export default {
       this.showPasswordReset = !this.showPasswordReset
     },
     login() {
-      this.$store.dispatch('login', {
+      const user = {
         email: this.loginForm.email,
         password: this.loginForm.password
-      })
+      }
+      this.login(user)
     },
     signup() {
-      this.$store.dispatch('signup', {
+      const user = {
         email: this.signupForm.email,
         password: this.signupForm.password,
         name: this.signupForm.name,
         title: this.signupForm.title
-      })
+      }
+      this.signup(user)
     }
   }
 }

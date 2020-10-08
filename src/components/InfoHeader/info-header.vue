@@ -1,9 +1,9 @@
 <script>
-import { usersGetters } from '@state/helper/users'
+import { usersComputed } from '@state/helper/users'
 
 export default {
   computed: {
-    ...usersGetters,
+    ...usersComputed,
   }
 }
 </script>
