@@ -6,7 +6,7 @@ export const state = {
   showBreadcrumbMenu: false,
   navRoutes: [],
   settings: {
-    stickyHeader: 'no',
+    stickyHeader: 'yes',
     fullWidth: 'no',
     theme: 'light',
   },

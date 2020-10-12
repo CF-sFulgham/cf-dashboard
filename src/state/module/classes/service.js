@@ -130,7 +130,7 @@ export const actions = {
 
   fetchClasses({ dispatch, commit, rootState })
   {
-    const axiosInstance = rootState.api.axiosInstance
+    const axiosInstance = this.$AxiosInstance
 
     commit('SET_PAGE_STATE', PAGE_STATE.LOADING)
 

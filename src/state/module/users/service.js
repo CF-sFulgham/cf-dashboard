@@ -34,7 +34,7 @@ export const actions = {
   },
   fetchUser({ dispatch, commit, rootState })
   {
-    const axiosInstance = rootState.api.axiosInstance
+    const axiosInstance = this.$AxiosInstance
 
     return axiosInstance
       .get('')
