@@ -5,8 +5,8 @@ import 'firebase/firestore'
 // firebase init - add your own config here
 const firebaseConfig = {
   apiKey: "AIzaSyCZtIRh1OQ8q_ySc2QWOeIoXsearNv9nbg",
-  authDomain: "ganggreen-10c76.firebaseapp.com",
-  databaseURL: "https://ganggreen-10c76.firebaseio.com",
+  authDomain: process.env.VUE_APP_DOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASE_URL,
   projectId:  "ganggreen-10c76",
   storageBucket: 'ganggreen-10c76.appspot.com',
   messagingSenderId: '',
@@ -14,7 +14,7 @@ const firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig)
 
-// utils
+// util
 const db = firebase.firestore()
 const auth = firebase.auth()
 
