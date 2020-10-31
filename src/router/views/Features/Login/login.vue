@@ -1,5 +1,6 @@
 <script>
 import LoginForm from '@viewLayouts/Forms/login-form.vue'
+import firebase from 'firebase'
 
 export default {
   components: {

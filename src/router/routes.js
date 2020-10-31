@@ -136,6 +136,17 @@ export default [
       },
     },
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => lazyLoadView(import('@viewFeatures/Profile/profile.vue')),
+    meta: {
+      beforeResolve(routeTo, routeFrom, next) {
+        store.dispatch('layout/breadcrumbMenu', { display: false }, { root: true })
+        next()
+      },
+    },
+  },
 ]
 //
 function lazyLoadView(AsyncView) {
