@@ -88,15 +88,15 @@ export default [
     },
   },
   {
-    path: '/sessions',
-    name: 'sessions',
-    component: () => lazyLoadView(import('@viewFeatures/Sessions/sessions.vue')),
+    path: '/audioFormSetup',
+    name: 'audioFormSetup',
+    component: () => lazyLoadView(import('@viewFeatures/AudioFormSetup/audioFormSetup.vue')),
     meta: {
       beforeResolve(routeTo, routeFrom, next) {
         const nav = [
           {
-            name: 'classes',
-            title: 'Classes',
+            name: 'home',
+            title: 'Home',
           },
         ]
         store.dispatch('layout/setNavigationRoutes', { nav }, { root: true })

@@ -71,7 +71,7 @@ export default {
     </a>
 
     <div class="template-options-inner">
-      <h1 class="template-option-logo">eRoster.</h1>
+      <h1 class="template-option-logo">CreationFoundation.</h1>
       <h6 class="template-options-title">Page settings</h6>
 
       <Options :options="options.skin.options" :title="options.skin.title" mode="skin"/>

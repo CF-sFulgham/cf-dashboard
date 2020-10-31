@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { AxiosInstance } from '../utils/http'
 import createLogger from 'vuex/dist/logger'
 import dispatchActionForAllFeatures from '@/src/utils/dispatch/dispatch-action-for-all-modules'
-// import { AxiosInstance } from '@utils/http'
-// import { AxiosInstanceDev } from '@utils/http/devHttp'
 import Logger from '@utils/logger'
 import modules from './module'
 
@@ -21,8 +20,8 @@ const store = new Vuex.Store({
   strict: isDev,
 })
 
-// store.$AxiosInstance = isDev ? new AxiosInstanceDev() : new AxiosInstance()
-store.$Logger = cfLogger;
+store.$AxiosInstance = new AxiosInstance().getInstance()
+store.$Logger = cfLogger
 
 export default store
 
