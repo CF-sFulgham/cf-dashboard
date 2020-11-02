@@ -8,11 +8,11 @@ import modules from './module'
 
 Vue.use(Vuex)
 const isDev = process.env.NODE_ENV === 'development'
-const plugins = isDev ? [createLogger()] : []
+// const plugins = isDev ? [createLogger()] : []
 const cfLogger = new Logger()
 
 const store = new Vuex.Store({
-  plugins: plugins,
+  plugins: [],
   modules,
   // Enable strict mode in development to get a warning
   // when mutating state outside of a mutation.

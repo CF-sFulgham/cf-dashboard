@@ -1,8 +1,8 @@
 <script>
 export default {
   page: {
-    title: 'Loading page...',
-    meta: [{ name: 'description', content: 'Loading page...' }],
+    title: 'Loading data...',
+    meta: [{ name: 'description', content: 'Loading page data...' }],
   },
 }
 </script>
