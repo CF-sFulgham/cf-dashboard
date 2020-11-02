@@ -1,85 +1,10 @@
 import store from '@/src/state/store'
-/*
-{
-    path: '/login',
-    name: 'Login',
-    component: () => lazyLoadView(import('@viewFeatures/Login/login.vue')),
-    meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        // If the user is already logged in
-        if (store.getters['auth/loggedIn']) {
-          // Redirect to the home page instead
-          next({ name: 'classes' })
-        } else {
-          // Continue to the login page
-          next()
-        }
-      },
-    },
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: () => lazyLoadView(import('@viewShared/Profile/_profile.vue')),
-    meta: {
-      authRequired: true,
-    },
-    props: (route) => ({ user: store.state.auth.currentUser || {} }),
-  },
-  {
-    path: '/profile/:username',
-    name: 'username-profile',
-    component: () => lazyLoadView(import('@viewShared/Profile/_profile.vue')),
-    meta: {
-      authRequired: true,
-      // HACK: In order to share data between the `beforeResolve` hook
-      // and the `props` function, we must create an object for temporary
-      // data only used during route resolution.
-      tmp: {},
-      beforeResolve(routeTo, routeFrom, next) {
-        store
-          // Try to fetch the user's information by their username
-          .dispatch('users/fetchUser', { username: routeTo.params.username })
-          .then((user) => {
-            // Add the user to `meta.tmp`, so that it can
-            // be provided as a prop.
-            routeTo.meta.tmp.user = user
-            // Continue to the route.
-            next()
-          })
-          .catch(() => {
-            // If a user with the provided username could not be
-            // found, redirect to the 404 page.
-            next({ name: '404', params: { resource: 'User' } })
-          })
-      },
-    },
-    // Set the user from the route params, once it's set in the
-    // beforeResolve route guard.
-    props: (route) => ({ user: route.meta.tmp.user }),
-  },
-  {
-    path: '/logout',
-    name: 'logout',
-    meta: {
-      authRequired: true,
-      beforeResolve(routeTo, routeFrom, next) {
-        store.dispatch('auth/logOut')
-        const authRequiredOnPreviousRoute = routeFrom.matched.some(
-          (route) => route.meta.authRequired
-        )
-        // Navigate back to previous page, or home as a fallback
-        next(authRequiredOnPreviousRoute ? { name: 'home' } : { ...routeFrom })
-      },
-    },
-  },
-*/
 
 export default [
   {
     path: '/',
-    name: 'classes',
-    component: () => lazyLoadView(import('@viewFeatures/Classes/classes.vue')),
+    name: 'appLoader',
+    component: () => lazyLoadView(import('@viewFeatures/AppLoader/appLoader.vue')),
     meta: {
       beforeResolve(routeTo, routeFrom, next) {
         store.dispatch('layout/breadcrumbMenu', { display: false }, { root: true })
@@ -104,11 +29,6 @@ export default [
         next()
       },
     },
-  },
-  {
-    path: '/checkin',
-    name: 'checkin',
-    component: () => lazyLoadView(import('@viewFeatures/CheckIn/checkin.vue')),
   },
   {
     path: '/404',

@@ -1,22 +1,16 @@
-const app = require('./config/app.config')
 const aliases = require('./config/aliases.config')
-
-const publicPath = app.settings.environment !== 'production' ? '' : './'
-
-process.NODE_ENV = JSON.stringify(app.settings.environment)
-process.env.VUE_APP_CONFIG = JSON.stringify(app)
-process.env.VUE_APP_SETTINGS = JSON.stringify(app.settings)
+const publicPath = process.env.VUE_APP_NODE_ENV !== 'production' ? '' : './'
 
 /** @type import('@vue/cli-service').ProjectOptions */
 module.exports = {
   // https://github.com/neutrinyarojs/webpack-chain/tree/v4#getting-started
   chainWebpack(config) {
     // Set Webpack mode to the environment setting
-    config.mode(app.settings.environment)
+    config.mode(process.env.VUE_APP_NODE_ENV)
 
     // We provide the app's title in Webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
-    config.set('name', app.title)
+    config.set('name', process.env.VUE_APP_TITLE)
 
     // Set up all the aliases we use in our app.
     // https://webpack.js.org/configuration/resolve/#resolvealias
