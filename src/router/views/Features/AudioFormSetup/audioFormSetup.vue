@@ -7,7 +7,7 @@ import { apiComputed } from '@state/helper/api'
 
 export default {
     page: {
-        title: 'Sessions',
+        title: 'Audio Setup',
         meta: [
             {
                 name: 'description',
@@ -61,11 +61,11 @@ export default {
                         vertical
                     >
                         <v-stepper-step
-                        :complete="e6 > 1"
+                        editable
                         step="1"
                         >
-                        Select an app
-                        <small>Summarize if needed</small>
+                        Please specify the name and id of your form. 
+                        <small>The name will show up as a label in the Admin Portal. The id is the unique id attribute on the form in the HTML. Also, View setup video.</small>
                         </v-stepper-step>
 
                         <v-stepper-content step="1">
@@ -76,7 +76,6 @@ export default {
                         ></v-card>
                         <v-btn
                             color="primary"
-                            @click="e6 = 2"
                         >
                             Continue
                         </v-btn>
@@ -86,10 +85,10 @@ export default {
                         </v-stepper-content>
 
                         <v-stepper-step
-                        :complete="e6 > 2"
                         step="2"
+                        editable
                         >
-                        Configure analytics for this app
+                        Configure your form by adding elements.
                         </v-stepper-step>
 
                         <v-stepper-content step="2">
@@ -110,10 +109,11 @@ export default {
                         </v-stepper-content>
 
                         <v-stepper-step
-                        :complete="e6 > 3"
+                        editable
                         step="3"
                         >
-                        Select an ad format and name ad unit
+                        Configure the audio tools for the form elements you just added.
+                        <small>The configuration will include setting up an accuracy threshold, dropdown menu selects, etc.</small>
                         </v-stepper-step>
 
                         <v-stepper-content step="3">
@@ -124,7 +124,6 @@ export default {
                         ></v-card>
                         <v-btn
                             color="primary"
-                            @click="e6 = 4"
                         >
                             Continue
                         </v-btn>
@@ -133,8 +132,10 @@ export default {
                         </v-btn>
                         </v-stepper-content>
 
-                        <v-stepper-step step="4">
-                        View setup instructions
+                        <v-stepper-step 
+                            editable 
+                            step="4">
+                        Demo Form
                         </v-stepper-step>
                         <v-stepper-content step="4">
                         <v-card
