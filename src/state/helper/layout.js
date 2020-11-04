@@ -5,7 +5,7 @@ export const layoutComputed = {
     showBreadcrumbMenu: state => state.showBreadcrumbMenu,
     settings: state => state.settings
   }),
-  ...mapGetters('layout', ['navigationRoutes'])
+  ...mapGetters('layout/service', ['navigationRoutes'])
 }
 
-export const layoutMethods = mapActions('layout', ['breadcrumbMenu, setSetting'])
+export const layoutMethods = mapActions('layout/service', ['breadcrumbMenu, setSetting'])
