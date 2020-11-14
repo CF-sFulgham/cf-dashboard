@@ -17,7 +17,6 @@ export default {
     },
     data () {
       return {
-        e6: 1,
       }
     },
     components: {
@@ -64,8 +63,8 @@ export default {
                         editable
                         step="1"
                         >
-                        Please specify the name and id of your form. 
-                        <small>The name will show up as a label in the Admin Portal. The id is the unique id attribute on the form in the HTML. Also, View setup video.</small>
+                        Please specify the name and ID of your form. 
+                        <small>The name will show up as a label in the Admin Portal. The ID is the unique ID attribute on the form in the HTML. Also, View setup video.</small>
                         </v-stepper-step>
 
                         <v-stepper-content step="1">
@@ -160,5 +159,5 @@ export default {
     </ItemsLayout>  
 </template>
 
-<style lang="stylus">
+<style lang="scss">
 </style>
