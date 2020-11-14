@@ -6,7 +6,7 @@
   "repository": "https://github.com/CF-sFulgham/cf-dashboard.git",
   "scripts": {
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --prod",
     "lint:eslint": "eslint --fix",
     "lint:stylelint": "stylelint --fix",
     "lint:markdownlint": "markdownlint",

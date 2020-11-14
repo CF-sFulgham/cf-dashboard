@@ -106,9 +106,39 @@ export default [
     },
   },
   {
+  path: '/billing',
+  name: 'billing',
+  component: () => lazyLoadView(import('@viewFeatures/Billing/billing.vue')),
+  meta: {
+    beforeResolve(routeTo, routeFrom, next) {
+      const nav = [
+        {
+          name: 'billing',
+          title: 'Billing',
+        },
+      ]
+      store.dispatch('layout/setNavigationRoutes', { nav }, { root: true })
+      store.dispatch('layout/breadcrumbMenu', { display: true }, { root: true })
+      next()
+    },
+  },
+},
+  {
     path: '/checkin',
     name: 'checkin',
     component: () => lazyLoadView(import('@viewFeatures/CheckIn/checkin.vue')),
+  },
+  {
+    path: '/landing',
+    name: 'landing',
+    component: () => lazyLoadView(import('@viewFeatures/Landing/landing.vue')),
+    meta: {
+      beforeResolve(routeTo, routeFrom, next) {
+        
+        store.dispatch('layout/breadcrumbMenu', { display: false }, { root: true })
+        next()
+      },
+    },
   },
   {
     path: '/404',
