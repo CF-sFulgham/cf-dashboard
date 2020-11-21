@@ -166,7 +166,7 @@
             <a href="#" class="logged-user" data-toggle="dropdown">
               <img src="http://via.placeholder.com/500x500" alt="" />
               <span>Katherine</span>
-              <i class="fa fa-angle-down"></i>
+              <font-awesome-icon :icon="['angle-down', 'user-secret']" />
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <nav class="nav">
@@ -726,3 +726,36 @@
     ><!-- slim-footer -->
   </div>
 </template>
+
+<script>
+import firebase from "firebase";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+export default {
+  data() {
+    return {
+      user: null
+    };
+  },
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
+  },
+  methods: {
+    logOut() {
+      firebase.auth().signOut().then(() => {
+        firebase.auth().onAuthStateChanged(() => {
+          this.$router.push('/login')
+        })
+      })
+    }
+  }
+};
+</script>
