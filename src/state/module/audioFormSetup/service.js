@@ -132,7 +132,7 @@ export const actions = {
 
   fetchSessions({ dispatch, commit, rootState, state })
   {
-    const axiosInstance = rootState.api.axiosInstance
+    const axiosInstance = this.$AxiosInstance
     const selectedClass = rootState.classes.service.selectedClass.rosterId ?
       rootState.classes.service.selectedClass :
       storage.get('SELECTED_CLASS')

@@ -12,7 +12,7 @@ fontAwesomeIconLibrary.add(
   require('@fortawesome/free-solid-svg-icons/faCalendar').definition,
   require('@fortawesome/free-solid-svg-icons/faClock').definition,
   require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition,
-  require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition
+  require('@fortawesome/free-solid-svg-icons/faUserClock').definition
 )
 
 export default {

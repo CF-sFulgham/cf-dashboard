@@ -36,43 +36,37 @@ export const actions = {
     // fetch user profile and set in state
     dispatch('fetchUserProfile', user)
   },
+  fetchUser({ dispatch, commit, rootState })
+  {
+    const axiosInstance = this.$AxiosInstance
 
-  async signup({ dispatch }, {form}) {
-    // sign user up
-    const { user } = await fb.auth.createUserWithEmailAndPassword(form.email, form.password)
-
-    // create user object in userCollections
-    await fb.usersCollection.doc(user.uid).set({
-      name: form.name,
-      title: form.title
-    })
-
-    // fetch user profile and set in state
-    dispatch('fetchUserProfile', user)
-  },
-
-  async fetchUserProfile({ commit }, user) {
-    // fetch user profile
-    const userProfile = await fb.usersCollection.doc(user.uid).get()
-
-    // set user profile in state
-    commit('setUserProfile', userProfile.data())
-
-    // change route to dashboard
-    if (router.currentRoute.path === '/login') {
-      router.push('/')
-    }
-  },
-
-  async logout({ commit }) {
-    // log user out
-    await fb.auth.signOut()
-
-    // clear user data from state
-    commit('setUserProfile', {})
-
-    // redirect to login view
-    router.push('/login')
+    return axiosInstance
+      .get('')
+      .then((response) =>
+      {
+        const newLog = {
+          id: v4(),
+          logType: LOG_TYPE.INFO,
+          message: `User lookup API call successful.`,
+          mutation: 'USERS/Actions/fetchUser'
+        }
+        this.$Logger.CreateLog(newLog);
+        this.$Logger.EndLog(newLog.id);
+        dispatch('setCurrentUser', { user: isDev ? axiosInstance.loggedInUserId : response.data.loggedInUserId })
+        return response
+      })
+      .catch(err =>
+      {
+        const newLog = {
+          id: v4(),
+          logType: LOG_TYPE.ERROR,
+          message: `User lookup API call unsuccessful.`,
+          mutation: 'USERS/Actions/fetchUser'
+        }
+        this.$Logger.CreateLog(newLog);
+        this.$Logger.EndLog(newLog.id);
+        console.log(err)
+      })
   },
 
 }

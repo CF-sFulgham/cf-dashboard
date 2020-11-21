@@ -1,12 +1,12 @@
 <script>
-const app = JSON.parse(process.env.VUE_APP_CONFIG)
+const appTitle = process.env.VUE_APP_TITLE
 
 export default {
   page: {
     // All subcomponent titles will be injected into this template.
     titleTemplate(title) {
       title = typeof title === 'function' ? title(this.$store) : title
-      return title ? `${title} | ${app.title}` : app.title
+      return title ? `${title} | ${appTitle}` : appTitle
     },
   }
 }

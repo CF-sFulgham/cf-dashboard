@@ -6,13 +6,13 @@ export const state = {
 }
 
 export const mutations = {
-  INITIALIZE_CHECKIN_STATE(state){
+    INITIALIZE_AUDIO_FORM_SETUP_STATE(state){
     state.isInit = true
     const newLog = {
       id: v4(),
       logType: LOG_TYPE.INFO,
       message: 'Initializing checkin state.',
-      mutation: 'Classes/INITIALIZE_CHECKIN_STATE'
+      mutation: 'AudioFormSetup/INITIALIZE_AUDIO_FORM_SETUP_STATE'
     }
     this.$Logger.CreateLog(newLog);
     this.$Logger.EndLog(newLog.id);
@@ -23,6 +23,6 @@ export const getters = {}
 
 export const actions = {
   init({ commit }) {
-    commit('INITIALIZE_CHECKIN_STATE')
+    commit('INITIALIZE_AUDIO_FORM_SETUP_STATE')
   },
 }

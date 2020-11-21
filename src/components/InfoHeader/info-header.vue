@@ -13,7 +13,7 @@ export default {
     <div class="container">
       <div class="slim-header-left">
         <h2 class="slim-logo">
-          <a href="index.html">Creation Foundation<span>.</span> </a>
+          <img :class="$style.cfLogo" alt="logo" src="@assets/images/brand_logo_small.png" />
         </h2>
       </div>
       <!-- slim-header-left -->
@@ -29,6 +29,10 @@ export default {
 </template>
 
 <style lang="scss" module>
+.cfLogo {
+  width: 190px;
+}
+
 .welcome {
   color: #343a40
 }

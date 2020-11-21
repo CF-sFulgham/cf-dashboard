@@ -2,6 +2,8 @@
   "name": "e-roster",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "repository": "https://github.com/CF-sFulgham/cf-dashboard.git",
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -14,9 +16,7 @@
     "lint:all:markdownlint": "npm run lint:markdownlint \"docs/*.md\" \"*.md\"",
     "lint:all:prettier": "npm run lint:prettier \"**/*.{js,json,css,scss,vue,html,md}\"",
     "lint": "npm run lint:all:eslint && npm run lint:all:stylelint && lint:all:markdownlint && lint:all:prettier",
-    "test:unit": "jest --no-cache",
-    "new": "cross-env HYGEN_TMPLS=generators hygen new",
-    "docs": "vuepress dev"
+    "test:unit": "jest --no-cache"
   },
   "mock-data-enabled": true,
   "mock-api-port": 5583,
@@ -34,7 +34,6 @@
     "core-js": "3.3.2",
     "date-fns": "2.10.0",
     "faker": "4.1.0",
-    "firebase": "^7.22.1",
     "lodash": "4.17.15",
     "node-sass": "4.14.1",
     "normalize.css": "8.0.1",
@@ -49,6 +48,7 @@
     "vue-meta": "2.3.3",
     "vue-router": "3.1.3",
     "vue-template-compiler": "2.6.11",
+    "vuetify": "2.3.16",
     "vuex": "3.1.2"
   },
   "devDependencies": {
