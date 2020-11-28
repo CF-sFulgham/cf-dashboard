@@ -13,4 +13,4 @@ const routesAppLoader = {
   },
 }
 
-export { routesAppLoader }
+export { routesAppLoader } 

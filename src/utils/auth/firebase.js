@@ -1,16 +1,16 @@
-import * as firebase from 'firebase/app'
+import { firebase } from '@firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
 // firebase init - add your own config here
 const firebaseConfig = {
-  apiKey: "AIzaSyCZtIRh1OQ8q_ySc2QWOeIoXsearNv9nbg",
-  authDomain: process.env.VUE_APP_DOMAIN,
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
   databaseURL: process.env.VUE_APP_DATABASE_URL,
-  projectId:  "ganggreen-10c76",
-  storageBucket: 'ganggreen-10c76.appspot.com',
-  messagingSenderId: '',
-  appId: ''
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGE_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID
 }
 firebase.initializeApp(firebaseConfig)
 

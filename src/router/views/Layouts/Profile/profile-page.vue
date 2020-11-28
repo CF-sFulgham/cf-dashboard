@@ -722,13 +722,14 @@
           >Copyright 2018 &copy; All Rights Reserved. Slim Dashboard Template</p
         >
         <p>Designed by: <a href="">ThemePixels</a></p> </div
-      ><!-- container --> </div
-    ><!-- slim-footer -->
+      ><!-- container -->
+    </div>
+    <!-- slim-footer -->
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -736,26 +737,29 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
   data() {
     return {
-      user: null
-    };
+      user: null,
+    }
   },
   created() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.user = user;
+        this.user = user
       } else {
-        this.user = null;
+        this.user = null
       }
-    });
+    })
   },
   methods: {
     logOut() {
-      firebase.auth().signOut().then(() => {
-        firebase.auth().onAuthStateChanged(() => {
-          this.$router.push('/login')
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          firebase.auth().onAuthStateChanged(() => {
+            this.$router.push('/login')
+          })
         })
-      })
-    }
-  }
-};
+    },
+  },
+}
 </script>
