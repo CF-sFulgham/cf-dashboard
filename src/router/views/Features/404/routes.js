@@ -1,5 +1,5 @@
 const routes404 = {
-  path: '/404',
+  path: '/',
   name: '404',
   component: require('@viewFeatures/404/404.vue').default,
   // Allows props to be passed to the 404 page through route

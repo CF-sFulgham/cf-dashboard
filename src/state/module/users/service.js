@@ -5,10 +5,11 @@ const isDev = process.env.NODE_ENV === 'development'
 
 export const state = {
   cachedUser: '',
+  userProfile: {},
 }
 
 export const getters = {
-  user: state => state.cachedUser,
+  user: state => state.userProfile,
 }
 
 export const mutations = {
@@ -28,9 +29,12 @@ export const mutations = {
 
 export const actions = {
   // Set current user
-  setCurrentUser({ commit }, { user })
-  {
-    commit('SET_CURRENT_USER', user)
+  async login({ dispatch }, {form}) {
+    // sign user in
+    const { user } = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
+
+    // fetch user profile and set in state
+    dispatch('fetchUserProfile', user)
   },
   fetchUser({ dispatch, commit, rootState })
   {
