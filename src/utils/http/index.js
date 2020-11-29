@@ -19,7 +19,7 @@ class AxiosInstance {
 
     init() {
         this._body = {}
-        this._baseURL = Config.get('endpoints.api') || '';
+        this._baseURL = Config.get('endpoints.api') || process.env.VUE_APP_BASE_URL;
     }
     
     getInstance() {
