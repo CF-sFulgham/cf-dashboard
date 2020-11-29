@@ -8,6 +8,7 @@ import VueMeta from 'vue-meta'
 import NProgress from 'nprogress/nprogress'
 import store from '@/src/state/store'
 import routes from './routes'
+import { auth } from '../utils/auth/firebase'
 
 Vue.use(VueRouter)
 Vue.use(VueMeta, {
@@ -59,7 +60,9 @@ router.beforeEach((routeTo, routeFrom, next) => {
 
   function redirectToLogin() {
     // Pass the original route to the login component
-    next({ name: 'login', query: { redirectFrom: routeTo.fullPath } })
+    if (authRequired && !auth.currentUser) {
+      next({ name: 'login', query: { redirectFrom: routeTo.fullPath } })
+    } 
   }
 })
 
