@@ -1,9 +1,9 @@
 <script>
-import { usersComputed } from '@state/helper/users'
+import Menu from './menu.vue'
 
 export default {
-  computed: {
-    ...usersComputed,
+  components: {
+    Menu,
   }
 }
 </script>
@@ -13,12 +13,12 @@ export default {
     <div class="container">
       <div class="slim-header-left">
         <h2 class="slim-logo">
-          <img :class="$style.cfLogo" alt="logo" src="@assets/images/brand_logo_small.png" />
+          <img class="cfLogo" alt="logo" src="@assets/images/cfLogo_small.jpg" />
         </h2>
       </div>
       <!-- slim-header-left -->
       <div class="slim-header-right">
-        <span class="welcome" :class="$style.welcome">Welcome back, {{ user }}<span class="exclaimation">!</span></span>
+        <Menu />
         <!-- dropdown -->
       </div>
       <!-- header-right -->
@@ -28,17 +28,20 @@ export default {
   <!-- slim-header -->
 </template>
 
-<style lang="scss" module>
+<style lang="scss" scoped>
 .cfLogo {
-  width: 190px;
+  height: 100%;
+  width: 70px;
 }
 
 .welcome {
   color: #343a40
 }
-</style>
 
-<style lang="scss">
+.slim-header {
+  background-color: #121a22;
+}
+
 body.dark {
   .welcome {
     color: #1b84e7 !important

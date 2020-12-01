@@ -1,3 +1,39 @@
+<script>
+import firebase from "firebase";
+export default {
+  page: {
+    title: 'Sign in',
+    meta: [
+      {
+        name: 'signIn.',
+        content: 'This page allows users to sign into their accounts.',
+      },
+    ],
+  },
+  data() {
+    return {
+      user: {   
+        email: '',
+        password: ''
+      }
+    };
+  },
+  methods: {
+    userLogin() {
+        firebase
+        .auth()
+        .signInWithEmailAndPassword(this.user.email, this.user.password)
+        .then(() => {
+            this.$router.push('/profile')
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    }
+  }
+};
+</script>
+
 <template>
   <div class="signin-wrapper">
     <form @submit.prevent="userLogin">
@@ -54,6 +90,7 @@
 
   .signin-title-secondary {
     font-size: 1.4rem;
+    font-weight: 400;
     color: #3b8dbb;
   }
 }
@@ -69,29 +106,3 @@
 }
 </style>
 
-<script>
-import firebase from "firebase";
-export default {
-  data() {
-    return {
-      user: {   
-        email: '',
-        password: ''
-      }
-    };
-  },
-  methods: {
-    userLogin() {
-        firebase
-        .auth()
-        .signInWithEmailAndPassword(this.user.email, this.user.password)
-        .then(() => {
-            this.$router.push('/profile')
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-    }
-  }
-};
-</script>

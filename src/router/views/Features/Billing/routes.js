@@ -13,8 +13,8 @@ const routesBilling = {
             title: 'Billing',
           },
         ]
-        store.dispatch('layout/setNavigationRoutes', { nav }, { root: true })
-        store.dispatch('layout/breadcrumbMenu', { display: true }, { root: true })
+        // store.dispatch('layout/setNavigationRoutes', { nav }, { root: true })
+        // store.dispatch('layout/breadcrumbMenu', { display: true }, { root: true })
         next()
       },
     },

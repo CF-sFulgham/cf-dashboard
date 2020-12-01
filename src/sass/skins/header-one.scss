@@ -10,7 +10,7 @@
 @import "../bootstrap/mixins";
 
 // Variables
-$color-primary:   #367EC1;
+$color-primary:   #4ea4d2;
 $color-secondary: #191F25;
 
 .slim-header {
@@ -33,14 +33,14 @@ $color-secondary: #191F25;
 }
 
 .logged-user {
-  color: rgba(#fff,.75);
+  color: $color-primary;
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: $color-primary;
   }
 
-  img { border-color: rgba(#fff, .5); }
+  img { border-color: $color-primary; }
 }
 
 .header-notification {

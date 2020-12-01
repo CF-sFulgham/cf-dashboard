@@ -3,11 +3,15 @@
 /* ------------------------------------------------------ */
 
 .slim-navbar {
-  padding: 15px 0;
+  padding: 0;
   background-color: #fff;
   border-bottom: 1px solid $gray-400;
 
-  .container { position: relative; }
+  .container { 
+    position: relative; 
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
   .nav {
     padding: 0;
@@ -83,7 +87,7 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    border: 1px solid $gray-300;
+    border: 0;
     border-right-width: 0;
 
     .icon {
@@ -107,7 +111,10 @@
       background-color: $gray-100;
     }
 
-    &.active { border-color: theme-color('primary'); }
+    &.active { 
+      border-bottom: 1px solid;
+      border-color: theme-color('primary'); 
+    }
 
     .square-8 {
       margin-left: 3px;

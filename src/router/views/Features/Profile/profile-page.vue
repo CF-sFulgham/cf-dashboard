@@ -1,3 +1,36 @@
+<script>
+import firebase from 'firebase'
+
+export default {
+  data() {
+    return {
+      user: null,
+    }
+  },
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user
+      } else {
+        this.user = null
+      }
+    })
+  },
+  methods: {
+    logOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          firebase.auth().onAuthStateChanged(() => {
+            this.$router.push('/login')
+          })
+        })
+    },
+  },
+}
+</script>
+
 <template>
   <div>
     <div class="slim-header">
@@ -728,38 +761,4 @@
   </div>
 </template>
 
-<script>
-import firebase from 'firebase'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-export default {
-  data() {
-    return {
-      user: null,
-    }
-  },
-  created() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.user = user
-      } else {
-        this.user = null
-      }
-    })
-  },
-  methods: {
-    logOut() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          firebase.auth().onAuthStateChanged(() => {
-            this.$router.push('/login')
-          })
-        })
-    },
-  },
-}
-</script>

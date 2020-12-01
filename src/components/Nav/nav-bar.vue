@@ -51,7 +51,7 @@ export default {
     <div class="container">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="page-messages.html">
+          <a class="nav-link active" href="page-messages.html">
             <i class="icon ion-ios-chatboxes-outline"></i>
             <span>Check-In</span>
             <!-- <span class="square-8"></span> -->
@@ -75,3 +75,10 @@ export default {
     <!-- container -->
   </nav>
 </template>
+
+<style lang="scss" scoped>
+.slim-navbar {
+  -webkit-box-shadow: 0px 5px 4px -4px rgba(0,0,0,0.11); 
+  box-shadow: 0px 5px 4px -4px rgba(0,0,0,0.11);
+}
+</style>
