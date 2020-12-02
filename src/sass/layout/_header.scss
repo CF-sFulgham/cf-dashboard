@@ -254,7 +254,7 @@
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: $gray-600;
+  color: #4ea4d2;
   width: 40px;
   height: 40px;
   @include border-radius(100%);
@@ -306,14 +306,14 @@
 .logged-user {
   display: flex;
   align-items: center;
-  color: $gray-700;
+  color: #4ea4d2;
   margin-left: 15px;
 
   img {
     width: 45px;
     height: 45px;
     padding: 3px;
-    border: 1px solid theme-color('primary');
+    border: 2px solid theme-color('primary');
     @include border-radius(100%);
   }
 
@@ -334,8 +334,11 @@
 
   &:hover,
   &:focus {
-    color: theme-color('primary');
-    img { box-shadow: 0 0 10px rgba(theme-color('primary'), .2); }
+    color: $gray-300;
+    img {
+      border-color: $gray-300;
+      box-shadow: 0 0 10px rgba($gray-300, .2); 
+    }
   }
 }
 

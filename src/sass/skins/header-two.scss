@@ -9,6 +9,8 @@
 // Custom mixins for bootstrap
 @import "../bootstrap/mixins";
 
+$color-primary: #4ea4d2;
+
 .slim-header {
   background-color: $gray-900;
   border-bottom-width: 0;
@@ -29,14 +31,15 @@
 }
 
 .logged-user {
-  color: rgba(#fff,.75);
+  color: $color-primary;
+  font-weight: 500;
 
   &:hover,
   &:focus {
-    color: #fff;
+    color: $gray-300;
   }
 
-  img { border-color: rgba(#fff, .5); }
+  img { border-color: $gray-300; }
 }
 
 .header-notification {

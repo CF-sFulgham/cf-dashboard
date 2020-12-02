@@ -34,13 +34,6 @@ export default {
 // https://github.com/rstacruz/nprogress
 @import '~nprogress/nprogress.css';
 
-/*
-@import '/assets/lib/font-awesome/css/font-awesome.css';
-@import '/assets/lib/Ionicons/css/ionicons.css';
-@import '/assets/lib/chartist/css/chartist.css';
-@import '/assets/lib/rickshaw/css/rickshaw.min.css';
-*/
-
 // Sass variables and utilities from src/sass.
 @import '@sass';
 </style>

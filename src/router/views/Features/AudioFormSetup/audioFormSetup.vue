@@ -160,4 +160,7 @@ export default {
 </template>
 
 <style lang="scss">
+    .theme--light.v-application {
+        background: transparent;
+    }
 </style>

@@ -8,16 +8,7 @@ export default {
   },
   data() {
     return {
-      persistentNavRoutes: [
-        {
-          name: 'home',
-          title: 'Home',
-        },
-        {
-          name: 'classes',
-          title: 'Classes',
-        },
-      ],
+      
     }
   },
   computed: {
@@ -30,10 +21,11 @@ export default {
   <div v-show="showBreadcrumbMenu" class="slim-pageheader">
     <ol class="breadcrumb slim-breadcrumb" :class="showBreadcrumbMenu ? $style.show : $style.hide" >
       <li :class="$style.spacer">
-        <BaseIcon name="chevron-left" :class="$style.chevronPosition"/>
+        <!-- <BaseIcon name="chevron-left" :class="$style.chevronPosition"/> -->
       </li>
       <Breadcrumbs :routes="navigationRoutes" />
     </ol>
+    <h6 class="slim-pagetitle">{{ page.title }}</h6>
   </div>
 </template>
 
@@ -53,4 +45,14 @@ export default {
     font-weight: bold;
     color: #1b84e7;
   }
+</style>
+
+<style lang="scss" scoped>
+.breadcrumb-item {
+  a {
+    &:hover {
+      color: #6c757d
+    }
+  }
+}     
 </style>

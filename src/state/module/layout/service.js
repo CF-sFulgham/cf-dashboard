@@ -1,20 +1,27 @@
+import { v4 } from 'uuid'
+
 export const state = {
+  isInit: false,
   showBreadcrumbMenu: false,
   navRoutes: [],
-  settings: {
-    stickyHeader: 'yes',
-    fullWidth: 'no',
-    theme: 'light',
-  },
+  menuItems: [
+    { name: 'dashboard', selected: false },
+    { name: 'account', selected: false },
+    { name: 'products', selected: false },
+    { name: 'conversions', selected: false },
+    { name: 'metrics', selected: false },
+    { name: 'contact us', selected: false },
+  ],
+  page: {
+    title: ''
+  }
 }
 
 export const getters = {
-  navigationRoutes (state) {
-    return state.navRoutes
-  },
-  menuItems (state) {
-    return state.menuItems
-  },
+  navigationRoutes: state => state.navRoutes,
+  menuItems: state => state.menuItems,
+  showBreadcrumbMenu: state => state.showBreadcrumbMenu,
+  page: state => state.page,
 }
 
 export const mutations = {
@@ -23,36 +30,46 @@ export const mutations = {
   },
 
   TOGGLE_BREADCRUMB_MENU(state, display) {
-    state.showBreadcrumbMenu = display;
+    state.showBreadcrumbMenu = display
   },
-  SET_SETTINGS(state, setting){
-    const name = setting.name
 
-    switch(name){
-      case 'sticky-header':
-        state.settings.stickyHeader = setting.value
-        break;
-      case 'full-width':
-        state.settings.fullWidth = setting.value
-        break;
-      case 'skin-light-mode':
-      case 'skin-dark-mode':
-        state.settings.theme = setting.value
-        break;
-      default:
-        break;
-    }
+  INITIALIZE_LAYOUT_STATE(state) {
+    state.isInit = true
+  },
+
+  SET_MENU_ITEM_STATE(state, menuItem) {
+    state.menuItems.forEach((item) => {
+      item.selected = menuItem.name === item.name
+    })
+  },
+
+  SET_PAGE_INFO(state, page) {
+    state.page.title = page.title
   }
 }
 
 export const actions = {
+  init({ commit }) {
+    commit('INITIALIZE_LAYOUT_STATE')
+  },
+
   setNavigationRoutes({ commit }, { nav }) {
     commit('SET_NAVIGATION_ROUTES', nav)
   },
+
   breadcrumbMenu({ commit }, { display }) {
     commit('TOGGLE_BREADCRUMB_MENU', display)
   },
+
   setSetting({ commit }, { settings }) {
     commit('SET_SETTINGS', settings)
-  }
+  },
+
+  setMenuItemState({ commit }, { menuItem }) {
+    commit('SET_MENU_ITEM_STATE', menuItem)
+  },
+
+  setPageTitle({ commit }, { page }) {
+    commit('SET_PAGE_INFO', page)
+  },
 }

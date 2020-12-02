@@ -12,10 +12,10 @@
 }
 
 .slim-pageheader {
-  padding: 15px 0;
+  padding: 15px 0 15px;
 
   @include media-breakpoint-up(sm) {
-    padding: 25px 0 0;
+    padding: 25px 0 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;

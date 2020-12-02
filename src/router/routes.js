@@ -1,14 +1,16 @@
 import { routes404 } from '@viewFeatures/404/routes'
-import { routesLogin } from '@viewFeatures/Login/routes'
+import { routesSignIn } from '@viewFeatures/SignIn/routes'
 import { routesAppLoader } from '@viewFeatures/AppLoader/routes'
 import { routesAudioFormSetup } from '@viewFeatures/AudioFormSetup/routes'
-import { routesProfilePage } from '@viewLayouts/Profile/routes'
+import { routesBilling } from '@viewFeatures/Billing/routes'
+import { routesProfilePage } from '@viewFeatures/Profile/routes'
 
 export default [
-  routesLogin,
+  routesSignIn,
   routesProfilePage,
   routesAppLoader,
   routesAudioFormSetup,
+  routesBilling,
   routes404,
   
   // Redirect any unmatched routes to the 404 page. This may

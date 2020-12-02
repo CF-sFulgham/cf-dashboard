@@ -87,7 +87,15 @@
         "../src/state/index.css"
       ],
       "@sass/*": ["../src/sass/index.scss/*"],
-      "@sass": ["../src/sass/index.scss"]
+      "@sass": ["../src/sass/index.scss"],
+      "@css/*": ["../src/sass//*"],
+      "@css": [
+        "../src/sass//index.js",
+        "../src/sass//index.json",
+        "../src/sass//index.vue",
+        "../src/sass//index.scss",
+        "../src/sass//index.css"
+      ]
     }
   }
 }
