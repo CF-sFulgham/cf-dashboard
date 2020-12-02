@@ -313,7 +313,7 @@
     width: 45px;
     height: 45px;
     padding: 3px;
-    border: 1px solid theme-color('primary');
+    border: 2px solid theme-color('primary');
     @include border-radius(100%);
   }
 
@@ -334,8 +334,11 @@
 
   &:hover,
   &:focus {
-    color: theme-color('primary');
-    img { box-shadow: 0 0 10px rgba(theme-color('primary'), .2); }
+    color: $gray-300;
+    img {
+      border-color: $gray-300;
+      box-shadow: 0 0 10px rgba($gray-300, .2); 
+    }
   }
 }
 

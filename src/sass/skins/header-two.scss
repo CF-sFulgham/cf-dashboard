@@ -32,13 +32,14 @@ $color-primary: #4ea4d2;
 
 .logged-user {
   color: $color-primary;
+  font-weight: 500;
 
   &:hover,
   &:focus {
-    color: $color-primary;
+    color: $gray-300;
   }
 
-  img { border-color: $color-primary; }
+  img { border-color: $gray-300; }
 }
 
 .header-notification {

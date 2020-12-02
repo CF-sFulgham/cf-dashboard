@@ -12,7 +12,8 @@ fontAwesomeIconLibrary.add(
   require('@fortawesome/free-solid-svg-icons/faCalendar').definition,
   require('@fortawesome/free-solid-svg-icons/faClock').definition,
   require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition,
-  require('@fortawesome/free-solid-svg-icons/faUserClock').definition
+  require('@fortawesome/free-solid-svg-icons/faUserClock').definition,
+  require('@fortawesome/free-solid-svg-icons/faChevronDown').definition,
 )
 
 export default {
@@ -50,4 +51,16 @@ export default {
     v-bind="$attrs"
     :class="customIconClass"
   />
+  <i
+    v-else-if="source === 'ionicon'"
+    v-bind="$attrs"
+  />
 </template>
+
+<style lang="scss" scoped>
+  i[class$="outline"] {
+    &::before {
+      font-weight: 600;
+    }
+  }
+</style>
