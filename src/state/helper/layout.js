@@ -1,11 +1,7 @@
-import { mapState, mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export const layoutComputed = {
-  ...mapState('layout', {
-    showBreadcrumbMenu: state => state.showBreadcrumbMenu,
-    settings: state => state.settings
-  }),
-  ...mapGetters('layout/service', ['navigationRoutes'])
+  ...mapGetters('layout/service', ['navigationRoutes', 'showBreadcrumbMenu', 'menuItems', 'page'])
 }
 
 export const layoutMethods = mapActions('layout/service', ['breadcrumbMenu, setSetting'])

@@ -94,7 +94,7 @@
   @include transition($transition-base);
   @include media-breakpoint-up(xl) {
     display: flex;
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 100px);
   }
 
   .slim-mainpanel {

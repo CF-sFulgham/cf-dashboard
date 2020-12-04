@@ -5,11 +5,13 @@ const isDev = process.env.NODE_ENV === 'development'
 
 export const state = {
   cachedUser: '',
+  user: 'Kishon',
   userProfile: {},
 }
 
 export const getters = {
-  user: state => state.userProfile,
+  user: state => state.user,
+  profile: state => state.userProfile,
 }
 
 export const mutations = {
