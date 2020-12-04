@@ -2,7 +2,7 @@ import { routes404 } from '@viewFeatures/404/routes'
 import { routesLogin } from '@viewFeatures/Login/routes'
 import { routesAppLoader } from '@viewFeatures/AppLoader/routes'
 import { routesAudioFormSetup } from '@viewFeatures/AudioFormSetup/routes'
-import { routesProfilePage } from '@viewLayouts/Profile/routes'
+import { routesProfilePage } from '@viewFeatures/Profile/routes'
 
 export default [
   routesLogin,

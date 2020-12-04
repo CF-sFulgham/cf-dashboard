@@ -3,9 +3,9 @@ import { lazyLoadView } from '@utils/routing'
 
 
 const routesProfilePage = {
-    path: '/',
+    path: '/profile',
     name: 'profile',
-    component: () => lazyLoadView(import('@viewLayouts/Profile/profile-page.vue')),
+    component: () => lazyLoadView(import('@viewFeatures/Profile/profile.vue')),
     props: true,
   }
   
