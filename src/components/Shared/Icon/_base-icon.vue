@@ -14,6 +14,7 @@ fontAwesomeIconLibrary.add(
   require('@fortawesome/free-solid-svg-icons/faChevronLeft').definition,
   require('@fortawesome/free-solid-svg-icons/faUserClock').definition,
   require('@fortawesome/free-solid-svg-icons/faChevronDown').definition,
+  require('@fortawesome/free-solid-svg-icons/faAngleDown').definition,
 )
 
 export default {

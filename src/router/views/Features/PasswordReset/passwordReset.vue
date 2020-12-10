@@ -1,51 +1,53 @@
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 export default {
   page: {
-    title: 'Sign in',
+    title: 'Password Reset',
     meta: [
       {
-        name: 'signIn.',
-        content: 'This page allows users to sign into their accounts.',
+        name: 'Password Reset.',
+        content: 'This page allows users to resest their password',
       },
     ],
   },
   data() {
     return {
-      user: {
-        email: '',
-        password: '',
-      },
-    }
+      user: {   
+        password: ''
+      }
+    };
   },
   methods: {
-    userLogin() {
-      firebase
+    forgetPassword() {
+        firebase
         .auth()
-        .signInWithEmailAndPassword(this.user.email, this.user.password)
+        .sendPasswordResetEmail(this.user.email)
         .then(() => {
-          this.$router.push('/profile')
+            alert('Check your registered email to reset the password!')
+            this.user = {   
+              email: ''
+            }
+        }).catch((error) => {
+          alert(error)
         })
-        .catch((error) => {
-          alert(error.message)
-        })
-    },
-  },
-}
+    }
+  }
+};
 </script>
 
 <template>
   <div class="signin-wrapper">
-    <form @submit.prevent="userLogin">
+    <form @submit.prevent="forgetPassword">
       <div class="signin-box">
         <h2 class="slim-logo">
           <img class="cfLogo" alt="logo" src="@assets/images/brand_logo.png" />
         </h2>
         <h2 class="greeting">
-          <span class="signin-title-primary">Welcome back!</span>
+          <span class="signin-title-primary">Reset Password!</span>
           <br />
-          <span class="signin-title-secondary">Sign in to continue.</span>
+          <span class="signin-title-secondary">Please enter your email</span>
         </h2>
+        
 
         <div class="form-group">
           <input
@@ -55,21 +57,9 @@ export default {
             v-model="user.email"
           /> </div
         ><!-- form-group -->
-        <div class="form-group mg-b-50">
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Enter your password"
-            v-model="user.password"
-          /> </div
-        ><!-- form-group -->
         <button type="submit" class="btn btn-primary btn-block btn-signin"
-          >Sign In</button
-        >
-         <br />
-        <span class="signin-title-primary">
-          <a href="/#/passwordreset">Forgot Password</a>
-        </span> </div
+          >Get New Password</button
+        > </div
       ><!-- signin-box -->
     </form> </div
   ><!-- signin-wrapper -->
@@ -108,3 +98,4 @@ export default {
   }
 }
 </style>
+

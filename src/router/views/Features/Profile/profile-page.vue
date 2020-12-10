@@ -195,11 +195,11 @@ export default {
               ><!-- dropdown-list --> </div
             ><!-- dropdown-menu-right --> </div
           ><!-- dropdown -->
-          <div class="dropdown dropdown-c">
+          <div class="dropdown dropdown-c show">
             <a href="#" class="logged-user" data-toggle="dropdown">
               <img src="http://via.placeholder.com/500x500" alt="" />
-              <span>Katherine</span>
-              <font-awesome-icon :icon="['angle-down', 'user-secret']" />
+              <span>{{user.displayName}}</span>
+              <i class="fa fa-angle-down"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <nav class="nav">

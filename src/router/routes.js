@@ -4,6 +4,8 @@ import { routesAppLoader } from '@viewFeatures/AppLoader/routes'
 import { routesAudioFormSetup } from '@viewFeatures/AudioFormSetup/routes'
 import { routesBilling } from '@viewFeatures/Billing/routes'
 import { routesProfilePage } from '@viewFeatures/Profile/routes'
+import { routesPasswordReset } from '@viewFeatures/PasswordReset/routes'
+import { routesPasswordUpdate } from '@viewFeatures/PasswordUpdate/routes'
 
 export default [
   routesSignIn,
@@ -12,6 +14,8 @@ export default [
   routesAudioFormSetup,
   routesBilling,
   routes404,
+  routesPasswordReset,
+  routesPasswordUpdate,
   
   // Redirect any unmatched routes to the 404 page. This may
   // require some server configuration to work in production:

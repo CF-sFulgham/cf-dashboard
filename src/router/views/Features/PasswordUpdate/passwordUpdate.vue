@@ -2,18 +2,17 @@
 import firebase from 'firebase'
 export default {
   page: {
-    title: 'Sign in',
+    title: 'Password Reset',
     meta: [
       {
-        name: 'signIn.',
-        content: 'This page allows users to sign into their accounts.',
+        name: 'Password Reset.',
+        content: 'This page allows users to resest their password',
       },
     ],
   },
   data() {
     return {
       user: {
-        email: '',
         password: '',
       },
     }
@@ -41,35 +40,29 @@ export default {
         <h2 class="slim-logo">
           <img class="cfLogo" alt="logo" src="@assets/images/brand_logo.png" />
         </h2>
-        <h2 class="greeting">
-          <span class="signin-title-primary">Welcome back!</span>
-          <br />
-          <span class="signin-title-secondary">Sign in to continue.</span>
-        </h2>
+        <h5 class="greeting">
+          <span class="updatepassword-title-secondary">Please enter your new password!</span>
+        </h5>
 
         <div class="form-group">
           <input
             type="text"
             class="form-control"
-            placeholder="Enter your email"
-            v-model="user.email"
+            placeholder="new password"
+            v-model="user.password"
           /> </div
         ><!-- form-group -->
         <div class="form-group mg-b-50">
           <input
             type="password"
             class="form-control"
-            placeholder="Enter your password"
-            v-model="user.password"
+            placeholder="confirm password"
+            v-model="user.confirmPassword"
           /> </div
         ><!-- form-group -->
         <button type="submit" class="btn btn-primary btn-block btn-signin"
-          >Sign In</button
-        >
-         <br />
-        <span class="signin-title-primary">
-          <a href="/#/passwordreset">Forgot Password</a>
-        </span> </div
+          >Update Password</button
+        > </div
       ><!-- signin-box -->
     </form> </div
   ><!-- signin-wrapper -->
@@ -91,8 +84,8 @@ export default {
     font-size: 1.3rem;
   }
 
-  .signin-title-secondary {
-    font-size: 1.4rem;
+  .updatepassword-title-secondary {
+    font-size: 1rem;
     font-weight: 400;
     color: #3b8dbb;
   }
