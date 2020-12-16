@@ -1,6 +1,4 @@
-import store from '@/src/state/store'
 import { lazyLoadView } from '@utils/routing'
-
 
 const routesProfilePage = {
     path: '/profile',

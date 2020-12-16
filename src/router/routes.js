@@ -4,12 +4,14 @@ import { routesAppLoader } from '@viewFeatures/AppLoader/routes'
 import { routesAudioFormSetup } from '@viewFeatures/AudioFormSetup/routes'
 import { routesBilling } from '@viewFeatures/Billing/routes'
 import { routesProfilePage } from '@viewFeatures/Profile/routes'
+import { routesDashboardPage } from '@viewFeatures/Dashboard/routes'
 import { routesPasswordReset } from '@viewFeatures/PasswordReset/routes'
 import { routesPasswordUpdate } from '@viewFeatures/PasswordUpdate/routes'
 
 export default [
   routesSignIn,
   routesProfilePage,
+  routesDashboardPage,
   routesAppLoader,
   routesAudioFormSetup,
   routesBilling,

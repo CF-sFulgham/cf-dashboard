@@ -1,6 +1,6 @@
 <script>
 import { layoutComputed } from '@state/helper/layout'
-
+import firebase from 'firebase'
 export default {
   data() {
     return {
@@ -22,6 +22,16 @@ export default {
 
       this.$router.push(eventData.name)
     },
+    logOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          firebase.auth().onAuthStateChanged(() => {
+            this.$router.push('/login')
+          })
+        })
+    },
   },
 }
 </script>
@@ -34,7 +44,9 @@ export default {
       <ul class="nav">
         <li v-for="(item, idx) in menuItems" :key="idx" class="nav-item" :class="{ active: item.selected }">
           <span class="nav-link" v-on="handlers" data-action="selectedNav" :data-name="item.name">
+            <router-link :to="item">
             <span>{{ item.name }}</span>
+            </router-link>
           </span>
         </li>
       </ul>
