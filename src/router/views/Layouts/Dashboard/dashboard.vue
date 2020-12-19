@@ -351,28 +351,3 @@
     ><!-- slim-footer -->
   </div>
 </template>
-<script>
-import { auth } from '@utils/auth/firebase'
-
-export default {
-  data() {
-    return {
-      email: '',
-      showSuccess: false,
-      errorMsg: '',
-    }
-  },
-  methods: {
-    async resetPassword() {
-      this.errorMsg = ''
-
-      try {
-        await auth.sendPasswordResetEmail(this.email)
-        this.showSuccess = true
-      } catch (err) {
-        this.errorMsg = err.message
-      }
-    },
-  },
-}
-</script>
