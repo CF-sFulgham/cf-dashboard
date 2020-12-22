@@ -10,6 +10,8 @@ import { routesPasswordReset } from '@viewFeatures/PasswordReset/routes'
 import { routesPasswordUpdate } from '@viewFeatures/PasswordUpdate/routes'
 import { routesProductsPage } from '@viewFeatures/Products/routes'
 import { routesConversionsPage } from '@viewFeatures/Conversions/routes'
+import { routesMetricsPage } from '@viewFeatures/Metrics/routes'
+import { routesContactUsPage } from '@viewFeatures/ContactUs/routes'
 
 
 export default [
@@ -25,7 +27,8 @@ export default [
   routesPasswordReset,
   routesPasswordUpdate,
   routesProductsPage,
-  
+  routesMetricsPage,
+  routesContactUsPage,
   // Redirect any unmatched routes to the 404 page. This may
   // require some server configuration to work in production:
   // https://router.vuejs.org/en/essentials/history-mode.html#example-server-configurations
