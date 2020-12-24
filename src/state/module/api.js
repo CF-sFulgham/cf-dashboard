@@ -46,7 +46,6 @@ export const actions = {
 
         commit('CONFIGURE_AXIOS', ai)
         commit('SET_API_STATE', API_STATE.LOADED)
-        dispatch('users/service/fetchUser', {}, { root: true })
       });
     // todo: add messages when call fails on 404
     // .catch((err) => {

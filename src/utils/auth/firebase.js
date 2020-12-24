@@ -26,6 +26,60 @@ const postsCollection = db.collection('posts')
 const commentsCollection = db.collection('comments')
 const likesCollection = db.collection('likes')
 
+class FirebaseService {
+  constructor(){}
+
+  async login(email, password){
+    return await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(auth => {
+        return auth
+      })
+      .catch(err => {
+        return false
+      })
+  }
+
+  async getUser() {
+    return await firebase
+      .auth()
+      .onAuthStateChanged(user => {
+        return user
+      })
+      .catch(err => {
+        console.log(err)
+        return false
+      })
+  }
+
+  async logout() {
+    return await firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        return true
+      })
+      .catch(err => {
+        console.log(err)
+        return false
+      })
+  }
+
+  async hasAccess() {
+    return await firebase
+      .auth()
+      .currentUser.getIdTokenResult()
+      .then(token => {
+        // Confirm the user is an Admin.
+        console.log(token.claims)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
+
 // export utils/refs
 export {
   db,
@@ -33,5 +87,7 @@ export {
   usersCollection,
   postsCollection,
   commentsCollection,
-  likesCollection
+  likesCollection,
+  FirebaseService,
 }
+

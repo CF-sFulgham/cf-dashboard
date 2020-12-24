@@ -1,8 +1,9 @@
 <script>
-import firebase from 'firebase'
+import { authComputed, authMethods } from '@state/helper/auth'
+
 export default {
   page: {
-    title: 'Sign in',
+    title: 'Sign In',
     meta: [
       {
         name: 'signIn.',
@@ -18,16 +19,15 @@ export default {
       },
     }
   },
+  computed: {
+    ...authComputed,
+  },
   methods: {
+    ...authMethods,
     userLogin() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.user.email, this.user.password)
+      this.login({email: this.user.email, password: this.user.password})
         .then(() => {
-          this.$router.push('/profile')
-        })
-        .catch((error) => {
-          alert(error.message)
+          if(!this.hasFbError) this.$router.push('/profile')
         })
     },
   },

@@ -64,7 +64,7 @@ export default {
     <div class="dropdown dropdown-c" v-on="handlers" data-action="quickProfile">
       <span class="logged-user" data-toggle="dropdown">
         <img src="http://via.placeholder.com/500x500" alt="">
-        <span>{{ user }}</span>
+        <span>{{ username }}</span>
         <BaseIcon name="chevron-down" class="down-menu-chevron"/>
       </span>
       <QuickProfile :show="quickProfile" />
