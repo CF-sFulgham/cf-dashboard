@@ -8,7 +8,6 @@ import VueMeta from 'vue-meta'
 import NProgress from 'nprogress/nprogress'
 import store from '@/src/state/store'
 import routes from './routes'
-import { auth } from '../utils/auth/firebase'
 
 Vue.use(VueRouter)
 Vue.use(VueMeta, {
@@ -39,18 +38,23 @@ router.beforeEach((routeTo, routeFrom, next) => {
 
   // Check if auth is required on this route
   // (including nested routes).
-  const authRequired = routeTo.matched.some((route) => route.meta.authRequired)
-
+  const authRequired = routeTo.matched.some(route => route.meta.authRequired)
+  const hasResolver = routeTo.matched.some(route => route.meta.resolve)
   // If auth isn't required for the route, just continue.
   if (!authRequired) return next()
 
   // If auth is required and the user is logged in...
   if (store.getters['auth/loggedIn']) {
     // Validate the local user token...
-    return store.dispatch('auth/validate').then((validUser) => {
+    return store.dispatch('auth/isTokenValid').then(isValid => {
       // Then continue if the token still represents a valid user,
       // otherwise redirect to login.
-      validUser ? next() : redirectToLogin()
+      if(hasResolver && isValid){
+        routeTo.matched[0].meta.resolve(routeTo, routeFrom, next)
+      } else {
+        store.dispatch('auth/logout')
+      }
+      
     })
   }
 
@@ -60,18 +64,26 @@ router.beforeEach((routeTo, routeFrom, next) => {
 
   function redirectToLogin() {
     // Pass the original route to the login component
-    if (authRequired && !auth.currentUser) {
-      next({ name: 'login', query: { redirectFrom: routeTo.fullPath } })
-    } 
-  }
+    store.dispatch('auth/isTokenValid').then(user => {
+      if (authRequired && !user) {
+        // next({ name: 'signIn', query: { redirectFrom: routeTo.fullPath } })
+        store.dispatch('auth/logout')
+      } else {
+        hasResolver ?
+          routeTo.matched[0].meta.resolve(routeTo, routeFrom, next) :
+          next()
+      }
+    })
+  } 
+
 })
 
 router.beforeResolve(async (routeTo, routeFrom, next) => {
   // Create a `beforeResolve` hook, which fires whenever
   // `beforeRouteEnter` and `beforeRouteUpdate` would. This
   // allows us to ensure data is fetched even when params change,
-  // but the resolved route does not. We put it in `meta` to
-  // indicate that it's a hook we created, rather than part of
+  // but the resolved route does not. I put it in `meta` to
+  // indicate that it's a hook I created, rather than part of
   // Vue Router (yet?).
   try {
     // For each matched route...

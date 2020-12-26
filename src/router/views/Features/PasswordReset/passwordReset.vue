@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     forgetPassword() {
-        firebase
+      firebase
         .auth()
         .sendPasswordResetEmail(this.user.email)
         .then(() => {

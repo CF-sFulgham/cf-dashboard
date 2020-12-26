@@ -5,6 +5,7 @@ const routesBilling = {
   path: '/billing',
   name: 'billing',
   component: () => lazyLoadView(import('@viewFeatures/Billing/billing.vue')),
+  props: true,
   meta: {
     beforeResolve(routeTo, routeFrom, next) {
       const nav = [

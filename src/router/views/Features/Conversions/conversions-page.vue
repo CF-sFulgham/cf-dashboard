@@ -1,5 +1,4 @@
 <script>
-import firebase from 'firebase'
 import Content from '@viewLayouts/Content/content.vue'
 import DetailsLayout from '@viewLayouts/Details/details.vue'
 

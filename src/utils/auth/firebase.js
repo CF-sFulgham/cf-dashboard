@@ -16,41 +16,28 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-// util
-const db = firebase.firestore()
 const auth = firebase.auth()
-
-// collection references
-const usersCollection = db.collection('users')
-const postsCollection = db.collection('posts')
-const commentsCollection = db.collection('comments')
-const likesCollection = db.collection('likes')
 
 class FirebaseService {
   constructor(){}
 
   async login(email, password){
-    return await firebase
+    const auth = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(auth => {
         return auth
       })
       .catch(err => {
-        return false
+        console.log(err)
+        return err
       })
+
+    return auth
   }
 
-  async getUser() {
-    return await firebase
-      .auth()
-      .onAuthStateChanged(user => {
-        return user
-      })
-      .catch(err => {
-        console.log(err)
-        return false
-      })
+  async getUser(){
+    return await firebase.auth().currentUser
   }
 
   async logout() {
@@ -58,36 +45,40 @@ class FirebaseService {
       .auth()
       .signOut()
       .then(() => {
-        return true
+          return true
       })
       .catch(err => {
         console.log(err)
-        return false
+        return err
       })
   }
 
-  async hasAccess() {
+  async accessToken(forceRefresh = false) {
     return await firebase
       .auth()
-      .currentUser.getIdTokenResult()
+      .currentUser.getIdTokenResult(forceRefresh)
       .then(token => {
-        // Confirm the user is an Admin.
-        console.log(token.claims)
+        return token
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(err => {
+        console.log(err);
+        return err
       });
+  }
+
+  async isTokenValid() {
+    const token = await this.accessToken()
+    if(!token.authTime) return false
+
+    const expireTime = new Date(token.expirationTime).getTime()
+    const nowTime = new Date().getTime()
+    return !(expireTime < nowTime)
+  }
+
+  async refreshToken() {
+    return await this.accessToken(true)
   }
 }
 
-// export utils/refs
-export {
-  db,
-  auth,
-  usersCollection,
-  postsCollection,
-  commentsCollection,
-  likesCollection,
-  FirebaseService,
-}
+export { auth, FirebaseService }
 

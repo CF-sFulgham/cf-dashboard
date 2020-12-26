@@ -21,9 +21,9 @@ const store = new Vuex.Store({
   strict: isDev,
 })
 
-store.$AxiosInstance = new AxiosInstance().getInstance()
 store.$Logger = cfLogger
 store.$auth = new FirebaseService()
+store.$AxiosInstance = new AxiosInstance().getInstance(store.$auth)
 export default store
 
 // Automatically run the `init` action for every module,

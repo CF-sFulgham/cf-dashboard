@@ -1,7 +1,13 @@
 <script>
+import Alert from '@components/Alert/alert.vue'
 import { authComputed, authMethods } from '@state/helper/auth'
+import { alertMethods } from '@state/helper/alert'
+import { usersMethods } from '@state/helper/users'
 
 export default {
+  components: {
+    Alert,
+  },
   page: {
     title: 'Sign In',
     meta: [
@@ -19,16 +25,28 @@ export default {
       },
     }
   },
+  created(){
+    this.resetPage()
+  },
+  watch: {
+    hasAuthError(hasErr) {
+      if (hasErr) {
+        this.showAlert()
+      } else {
+        this.hideAlert()
+      }
+    },
+  },
   computed: {
     ...authComputed,
   },
   methods: {
     ...authMethods,
+    ...alertMethods,
+    ...usersMethods,
     userLogin() {
-      this.login({email: this.user.email, password: this.user.password})
-        .then(() => {
-          if(!this.hasFbError) this.$router.push('/profile')
-        })
+      const _self = this
+      this.login({ email: this.user.email, password: this.user.password })
     },
   },
 }
@@ -53,29 +71,56 @@ export default {
             class="form-control"
             placeholder="Enter your email"
             v-model="user.email"
-          /> </div
-        ><!-- form-group -->
+          />
+        </div>
+        <!-- form-group -->
         <div class="form-group mg-b-50">
           <input
             type="password"
             class="form-control"
             placeholder="Enter your password"
             v-model="user.password"
-          /> </div
-        ><!-- form-group -->
-        <button type="submit" class="btn btn-primary btn-block btn-signin"
-          >Sign In</button
-        >
-         <br />
+          />
+
+          <Alert class="alert" type="error" :dismiss="false" :timer="6000" :message="errorMsg"/>
+        </div>
+        <!-- form-group -->
+        
+
+        <button type="submit" class="btn btn-primary btn-block btn-signin">
+          Sign In
+        </button>
+        <br />
         <span class="signin-title-primary">
           <a href="/#/passwordreset">Forgot Password</a>
-        </span> </div
-      ><!-- signin-box -->
-    </form> </div
-  ><!-- signin-wrapper -->
+        </span>
+      </div>
+      <!-- signin-box -->
+    </form>
+  </div>
+  <!-- signin-wrapper -->
 </template>
 
 <style lang="scss" scoped>
+.alert {
+  border-radius: 0px !important;
+  padding: 0 !important;
+
+  >>> .v-alert {
+    font-weight: 500 !important;
+    padding: .594rem .75rem !important;
+    font-size: 12px !important;
+    letter-spacing: 1px !important;
+    background-color: #dc3545 !important;
+    border-radius: 0 !important;
+    text-align: left;
+    margin: 1rem 0 0;
+    text-transform: uppercase;
+  }
+}
+
+
+
 .slim-logo {
   text-align: center;
   .cfLogo {

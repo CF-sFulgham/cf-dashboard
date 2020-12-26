@@ -2,6 +2,8 @@
 import { PAGE_STATE } from '@utils/enums'
 import SpinLoader from '@components/Loading/_loadingSpinner.vue'
 import { apiComputed } from '@state/helper/api'
+import { authMethods } from '@state/helper/auth'
+import { usersMethods } from '@state/helper/users'
 
 export default {
   page: {
@@ -18,15 +20,24 @@ export default {
   },
   data() {
     return {
-      classes: [],
     }
   },
-  created() {
-    if (this.apiState === 'LOADED') return
+  created(){
+    const _self = this
+    this.getUser()
+        .then(user => {
+          _self.setUser(user)
+        })
+    this.getToken()
+      .then(token => {
+        _self.setClaims(token.claims)
+        this.$router.push('/profile')
+      })
+    // if (this.apiState === 'LOADED') return
   },
   computed: {
     ...apiComputed,
-    Loaded() {
+    /* Loaded() {
       return this.pageState === PAGE_STATE.LOADED
     },
     Loading() {
@@ -37,14 +48,16 @@ export default {
     },
     Error() {
       return this.pageState === PAGE_STATE.ERROR
-    },
+    }, */
   },
   watch: {
-    apiState(value) {
+    /* apiState(value) {
       if (value === 'LOADED') return
-    },
+    }, */
   },
   methods: {
+    ...authMethods,
+    ...usersMethods
   },
 }
 </script>
