@@ -10,7 +10,8 @@ export const state = {
     { name: 'products', selected: false },
     { name: 'conversions', selected: false },
     { name: 'metrics', selected: false },
-    { name: 'contact us', selected: false },
+    { name: 'training', selected: false },
+    { name: 'contact', selected: false },
   ],
   page: {
     title: ''

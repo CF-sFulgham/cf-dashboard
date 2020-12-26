@@ -21,6 +21,8 @@ export default {}
           <span>&copy; 2021 CreationFoundation</span>
           <span class="bold"> | </span>
           <span>All Rights Reserved</span>
+          <span class="bold"> | </span>
+          <span>Blog</span>
         </div>
       </div>
     </div>

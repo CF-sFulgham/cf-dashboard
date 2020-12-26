@@ -65,7 +65,7 @@ export default {
 </script>
 
 <template>
-  <aside class="template-options-wrapper" :class="showSettings ? 'show' : ''">
+  <aside class="template-options-wrapper d-none" :class="showSettings ? 'show' : ''">
     <a href="" class="template-options-btn" @click="toggleMenu">
       <BaseIcon name="cog" />
     </a>

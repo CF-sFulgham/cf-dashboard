@@ -1,7 +1,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export const usersComputed = {
-  ...mapGetters('users/service', ['user', 'profile']),
+  ...mapGetters('users/service', ['username', 'profile']),
 }
 
-export const usersMethods = mapActions('user/service', ['login', 'logout'])
+export const usersMethods = mapActions('users/service', ['setUser', 'setClaims'])

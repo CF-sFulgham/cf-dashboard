@@ -16,22 +16,69 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-// util
-const db = firebase.firestore()
 const auth = firebase.auth()
 
-// collection references
-const usersCollection = db.collection('users')
-const postsCollection = db.collection('posts')
-const commentsCollection = db.collection('comments')
-const likesCollection = db.collection('likes')
+class FirebaseService {
+  constructor(){}
 
-// export utils/refs
-export {
-  db,
-  auth,
-  usersCollection,
-  postsCollection,
-  commentsCollection,
-  likesCollection
+  async login(email, password){
+    const auth = await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(auth => {
+        return auth
+      })
+      .catch(err => {
+        console.log(err)
+        return err
+      })
+
+    return auth
+  }
+
+  async getUser(){
+    return await firebase.auth().currentUser
+  }
+
+  async logout() {
+    return await firebase
+      .auth()
+      .signOut()
+      .then(() => {
+          return true
+      })
+      .catch(err => {
+        console.log(err)
+        return err
+      })
+  }
+
+  async accessToken(forceRefresh = false) {
+    return await firebase
+      .auth()
+      .currentUser.getIdTokenResult(forceRefresh)
+      .then(token => {
+        return token
+      })
+      .catch(err => {
+        console.log(err);
+        return err
+      });
+  }
+
+  async isTokenValid() {
+    const token = await this.accessToken()
+    if(!token.authTime) return false
+
+    const expireTime = new Date(token.expirationTime).getTime()
+    const nowTime = new Date().getTime()
+    return !(expireTime < nowTime)
+  }
+
+  async refreshToken() {
+    return await this.accessToken(true)
+  }
 }
+
+export { auth, FirebaseService }
+

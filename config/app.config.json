@@ -1,13 +1,11 @@
 {
   "title": "Creation Foundation",
-  "description": "Marketing Website",
+  "description": "Administrative Console",
   "settings": {
     "environment": "development",
     "host": "www.creationfoundation.com",
-    "mock": true,
     "endpoints": {
-      "api": "http://localhost:8080",
-      "mock": "http://localhost:5151"
+      "api": "http://localhost:3000"
     }
   }
 }

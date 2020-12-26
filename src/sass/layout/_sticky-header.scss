@@ -29,7 +29,10 @@
     }
   }
 
-  .slim-mainpanel { margin-top: $slim-header-height + 77px; }
+  .slim-mainpanel { 
+    margin-top: $slim-header-height + 45px;
+    margin-bottom: 131px;
+  }
 
   // with sidebar
   .slim-body {
