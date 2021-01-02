@@ -3,7 +3,9 @@ import Router from '@router'
 export const state = {
   isInit: false,
   hasAuthError: false,
+  hasSuccessMsg: false,
   errorMsg: '',
+  successMsg: '',
   loggedIn: false,
   authInfo: {
     isNewUser: false,
@@ -13,6 +15,8 @@ export const state = {
 
 export const getters = {
   hasAuthError: (state) => state.hasAuthError,
+  hasSuccessMsg: (state) => state.hasSuccessMsg,
+  successMsg: (state) => state.successMsg,
   errorMsg: (state) => state.errorMsg,
   loggedIn: (state) => state.loggedIn,
 }
@@ -25,7 +29,12 @@ export const mutations = {
     state.hasAuthError = true
     if (msg) state.errorMsg = msg
   },
+  SET_AUTH_SUCCESS(state, msg) {
+    state.hasSuccessMsg = true
+    if (msg) state.successMsg = msg
+  },
   RESET_ERROR(state) {
+    state.hasSuccessMsg = false
     state.hasAuthError = false
   },
   SET_AUTH_INFO(state, { isNewUser, operationType }) {
@@ -41,8 +50,10 @@ export const mutations = {
 
 export const actions = {
   init({ commit }) {
+    this.$AxiosInstance.setAuth(this.$auth)
     commit('INITIALIZE_AUTH_STATE')
   },
+
   async getUser({ commit }) {
     commit('RESET_ERROR')
     return await this.$auth
@@ -56,6 +67,7 @@ export const actions = {
         return false
       })
   },
+
   async getToken({ commit }) {
     commit('RESET_ERROR')
     return await this.$auth
@@ -68,6 +80,15 @@ export const actions = {
         return false
       })
   },
+
+  async isTokenValid(){
+    return await this.$auth.isTokenValid()
+  },
+
+  async refreshToken(){
+    return await this.$auth.refreshToken()
+  },
+
   async login({ commit }, { email, password }) {
     commit('RESET_ERROR')
     await this.$auth
@@ -89,21 +110,25 @@ export const actions = {
         commit('SET_AUTH_ERROR') // this means err with the code
       })
   },
-  async logout({ commit }) {
+  
+  async logout({ commit }, redirect) {
     commit('RESET_ERROR')
     commit('SET_LOGGED_OUT')
     await this.$auth.logout().then(() => {
-      Router.push('/')
+      if(redirect){
+        Router.push({ name: 'signIn', query: { redirectFrom: redirect.from } })
+      } else {
+        Router.push({ name: 'signIn'})
+      }
     })
   },
+
   resetPage({ commit }) {
     commit('RESET_ERROR')
     commit('SET_LOGGED_OUT')
   },
-  async isTokenValid(){
-    return await this.$auth.isTokenValid()
-  },
-  async validate() {
-    return await this.$auth.getUser()
+
+  async setSuccessMessage({ commit }, message) {
+    commit('SET_AUTH_SUCCESS', message)
   },
 }

@@ -6,8 +6,8 @@ import { routesAccountPage } from '@viewFeatures/Account/routes'
 import { routesBilling } from '@viewFeatures/Billing/routes'
 import { routesProfilePage } from '@viewFeatures/Profile/routes'
 import { routesDashboardPage } from '@viewFeatures/Dashboard/routes'
-import { routesPasswordReset } from '@viewFeatures/PasswordReset/routes'
-import { routesPasswordUpdate } from '@viewFeatures/PasswordUpdate/routes'
+import { routesSendPasswordReset } from '@viewFeatures/SendPasswordReset/routes'
+import { routesPassword } from '@viewFeatures/Password/routes'
 import { routesProductsPage } from '@viewFeatures/Products/routes'
 import { routesConversionsPage } from '@viewFeatures/Conversions/routes'
 import { routesMetricsPage } from '@viewFeatures/Metrics/routes'
@@ -24,16 +24,20 @@ export default [
   routesAudioFormSetup,
   routesBilling,
   routes404,
-  routesPasswordReset,
-  routesPasswordUpdate,
+  routesSendPasswordReset,
+  routesPassword,
   routesProductsPage,
   routesMetricsPage,
   routesContactUsPage,
-  // Redirect any unmatched routes to the 404 page. This may
+  // Redirect any unmatched routes to the sign in page. This may
   // require some server configuration to work in production:
   // https://router.vuejs.org/en/essentials/history-mode.html#example-server-configurations
   {
     path: '*',
-    redirect: '404',
+    redirect: { name: 'signIn' },
+  },
+  {
+    path: '/',
+    redirect: { name: 'signIn' },
   },
 ]

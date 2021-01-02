@@ -7,7 +7,8 @@ const routesBilling = {
   component: () => lazyLoadView(import('@viewFeatures/Billing/billing.vue')),
   props: true,
   meta: {
-    beforeResolve(routeTo, routeFrom, next) {
+    authRequired: true,
+    resolve(routeTo, routeFrom, next) {
       const nav = [
         {
           name: 'account',
