@@ -5,6 +5,9 @@ const routesConversionsPage = {
     name: 'conversions',
     component: () => lazyLoadView(import('@viewFeatures/Conversions/conversions-page.vue')),
     props: true,
+    meta: {
+      authRequired: true,
+    },
   }
   
   export { routesConversionsPage }

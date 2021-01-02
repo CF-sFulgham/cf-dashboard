@@ -1,10 +1,14 @@
+import store from '@/src/state/store'
+import { lazyLoadView } from '@utils/routing'
+
 const routes404 = {
-  path: '/',
+  path: '/oops',
   name: '404',
   component: require('@viewFeatures/404/404.vue').default,
-  // Allows props to be passed to the 404 page through route
-  // params, such as `resource` to define what wasn't found.
   props: true,
+  meta: {
+    authRequired: false,
+  },
 }
 
 export { routes404 }

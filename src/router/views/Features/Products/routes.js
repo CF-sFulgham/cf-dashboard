@@ -5,7 +5,10 @@ const routesProductsPage = {
   path: '/products',
   name: 'products',
   component: () => lazyLoadView(import('@viewFeatures/Products/products.vue')),
-
+  props: true,
+  meta: {
+    authRequired: true,
+  },
 }
 
 export { routesProductsPage }

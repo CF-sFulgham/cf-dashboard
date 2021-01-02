@@ -32,4 +32,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+  .nav-link {
+    cursor: pointer;
+  }
 </style>

@@ -5,8 +5,10 @@ const routesAudioFormSetup = {
   path: '/audioFormSetup',
   name: 'audioFormSetup',
   component: () => lazyLoadView(import('@viewFeatures/AudioFormSetup/audioFormSetup.vue')),
+  props: true,
   meta: {
-    beforeResolve(routeTo, routeFrom, next) {
+    authRequired: true,
+    resolve(routeTo, routeFrom, next) {
       const nav = [
         {
           name: 'home',

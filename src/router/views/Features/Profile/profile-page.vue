@@ -16,6 +16,7 @@ export default {
       DetailsLayout,
   },
   created() {
+    const contacts = this.$store.$AxiosInstance.get('contacts')
   },
   methods: {
   },

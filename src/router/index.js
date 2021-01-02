@@ -29,7 +29,7 @@ const router = new VueRouter({
 })
 
 // Before each route evaluates...
-router.beforeEach((routeTo, routeFrom, next) => {
+router.beforeEach(async (routeTo, routeFrom, next) => {
   // If this isn't an initial page load...
   if (routeFrom.name !== null) {
     // Start the route progress bar.
@@ -46,15 +46,18 @@ router.beforeEach((routeTo, routeFrom, next) => {
   // If auth is required and the user is logged in...
   if (store.getters['auth/loggedIn']) {
     // Validate the local user token...
-    return store.dispatch('auth/isTokenValid').then(isValid => {
+    return store.dispatch('auth/isTokenValid').then(async(isValid) => {
       // Then continue if the token still represents a valid user,
       // otherwise redirect to login.
       if(hasResolver && isValid){
         routeTo.matched[0].meta.resolve(routeTo, routeFrom, next)
       } else {
-        store.dispatch('auth/logout')
-      }
-      
+        const hasRefreshToken = await store.dispatch('auth/refreshToken')
+        
+        hasRefreshToken ? 
+          redirectToLogin() : 
+          store.dispatch('auth/logout')
+      }      
     })
   }
 
@@ -62,12 +65,13 @@ router.beforeEach((routeTo, routeFrom, next) => {
   // redirect to login.
   redirectToLogin()
 
-  function redirectToLogin() {
+  async function redirectToLogin() {
     // Pass the original route to the login component
-    store.dispatch('auth/isTokenValid').then(user => {
-      if (authRequired && !user) {
-        // next({ name: 'signIn', query: { redirectFrom: routeTo.fullPath } })
-        store.dispatch('auth/logout')
+    await store.dispatch('auth/refreshToken')
+
+    store.dispatch('auth/isTokenValid').then(isValid => {
+      if (authRequired && !isValid) {
+        store.dispatch('auth/logout', { from: routeTo.fullPath })
       } else {
         hasResolver ?
           routeTo.matched[0].meta.resolve(routeTo, routeFrom, next) :

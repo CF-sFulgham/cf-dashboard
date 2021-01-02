@@ -5,6 +5,9 @@ const routesAccountPage = {
     name: 'account',
     component: () => lazyLoadView(import('@viewFeatures/Account/account-page.vue')),
     props: true,
+    meta: {
+      authRequired: true,
+    },
   }
   
   export { routesAccountPage }

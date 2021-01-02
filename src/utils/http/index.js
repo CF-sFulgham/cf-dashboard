@@ -14,14 +14,13 @@ class AxiosInstance {
   _headers = { 'Content-Type': 'application/json' }
   _isMakingCall = false
 
-  constructor(auth) {
-    this._auth = auth
+  constructor() {
     this.init()
   }
 
   init() {
     this._body = {}
-    this._baseURL = Config.get('endpoints.api') || process.env.VUE_APP_BASE_URL
+    this._baseURL = Config.get('settings.endpoints.api') || process.env.VUE_APP_BASE_URL
   }
 
   getInstance() {
@@ -37,23 +36,37 @@ class AxiosInstance {
       (error) => _self.errorHandler(error)
     )
 
+    _self._instance.setAuth = auth => {
+      _self._instance._auth = auth
+    }
+
     return _self._instance
   }
 
-  requestHandler(req) {
-    const _self = this
-    const isTokenValid = this._auth.isTokenValid()
+  async requestHandler(req) {
+    const auth = this._instance._auth
+    const isTokenValid = await auth.isTokenValid()
     // cancels the call if it taking too long.
-    // One time refresh token logic
+
     if (!isTokenValid) {
-      _self._source.cancel('User is no longer signed in.')
-      this._auth.logout().then(() => {
-        Router.push('/')
-      })
-      return
+      const hasNewToken = await auth.refreshToken()
+
+      if(!hasNewToken){
+        this._source.cancel('User is no longer signed in.')
+        auth.logout().then(() => {
+          Router.push('/auth/signIn')
+        })
+        return
+      }
     }
 
-    _self._isMakingCall = true
+    const { token } = await auth.accessToken()
+
+    if(token) req.headers.authorization = `bearer ${token}`
+    
+    this._isMakingCall = true
+
+    const _self = this
     setTimeout(() => {
       if (_self._isMakingCall)
         _self._source.cancel('Call exceeded allotted time.')
